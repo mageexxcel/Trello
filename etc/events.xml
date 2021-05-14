@@ -1,0 +1,19 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- sales_order_save_after event  for test-->
+    <event name="checkout_submit_all_after">
+        <observer name="excellence_trello_checkoutsubmitallafter" instance="Excellence\Trello\Observer\CheckoutSubmitAllAfter" />
+    </event>
+     <event name="sales_order_shipment_save_after">
+        <observer name="excellence_trello_shipmentsaveafter" instance="Excellence\Trello\Observer\SalesOrderShipmentSaveAfter" />
+    </event>
+    <event name="sales_order_invoice_save_after">
+        <observer name="excellence_trello_invoicesaveafter" instance="Excellence\Trello\Observer\SalesOrderInvoiceSaveAfter" />
+    </event>
+    <event name="sales_order_creditmemo_save_after">
+        <observer name="excellence_trello_creditmemosaveafter" instance="Excellence\Trello\Observer\SalesOrderCreditMemoSaveAfter" />
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="excellence_trello_salesordersaveafter" instance="Excellence\Trello\Observer\SalesOrderSaveAfter" />
+    </event> 
+</config>
+

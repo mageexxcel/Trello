@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Excellence_Trello::trello" title="Trello" module="Excellence_Trello" sortOrder="20" parent="Excellence_Base::base" resource="Excellence_Base::base" />
+        <add id="Excellence_Trello::trello_setupwizard" title="SetupWizard" action="trello/trello/setupwizard" module="Excellence_Trello" sortOrder="20" parent="Excellence_Trello::trello" resource="Excellence_Trello::trello_setupwizard" />
+        <add id="Excellence_Trello::excellence_rules_index" title="Rules" module="Excellence_Trello" parent="Excellence_Trello::trello" sortOrder="20" dependsOnModule="Excellence_Trello" action="trello/rules/index" resource="Excellence_Trello::excellence_rules_index"/>        
+    </menu>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <trello>
+            <wizard>
+                <setupdone>No</setupdone>
+            </wizard>
+            <advance>
+                <trellokey>459dbebe4977ca89c6d4945205d159e2</trellokey>
+                <enable>1</enable>
+                <log>0</log>
+            </advance>
+        </trello>
+        
+    </default>
+</config>
