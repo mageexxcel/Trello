@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="excellence" translate="label" sortOrder="100">
+            <label>excellence</label>
+        </tab>
+        <section id="trello" translate="label" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Trello</label>
+            <tab>excellence</tab>
+            <resource>Excellence_Trello::trello_config</resource>
+            <group id="setting" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Trello Setting</label>
+                <field id="connectLink" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>Excellence\Trello\Block\System\Config\Form\Field\Connectlink</frontend_model>
+                </field>
+                <field id="tokenkey" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Trello Token key</label>
+                    <comment><![CDATA[This field is auto filled after your trello account has been authorized. If this field is empty, means your trello account is not authorized yet]]></comment>
+                </field>
+                <field id="startsetupwizard" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>Excellence\Trello\Block\System\Config\Form\Field\Startsetup</frontend_model>
+                </field>
+                <field id="setuprevoke" translate="label comment" sortOrder="40" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>Excellence\Trello\Block\System\Config\Form\Field\Revoke</frontend_model>
+                </field>
+            </group>
+            <group id="wizard" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Setup Wizard</label>
+                <field id="setupdone" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Setup Completed</label>
+                    <frontend_model>Excellence\Trello\Block\System\Config\Form\Field\Setupdone</frontend_model>
+                    <comment><![CDATA[This shows if you have completed the setup wizard or not. You need to completed setup wizard from Top Menu -> Excellence -> Trello -> Setup Wizard to properly integrate trello. ]]></comment>
+                </field>
+            </group>
+            <group id="webhooks" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Webhooks Trello</label>
+                <field id="comment" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Trello Comments</label>
+                    <source_model>Excellence\Trello\Model\Config\Source\Comment</source_model>
+                    <comment><![CDATA[Configure here if you want comments entered in trello cards to automatically update in magento order comments. You can either select all comments to show up or only comments having @magento_bot to show up in order comments]]></comment>
+                </field>
+                <field id="emailnotify" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Notify Customers for Trello comments by Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[ Configure here if you want trello comments updated in order to automatically be emails to customers ]]></comment>
+                </field>
+                <field id="trellolist" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Move orders in various trello lists</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[ Configure here if you want orders to automatically move across various trello lists as the order status changes in magento ]]></comment>
+                </field>
+            </group>
+            <group id="advance" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Trello Advance</label>
+                <field id="trellokey" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Trello Application Key</label>
+                    <comment><![CDATA[Change this only if you know what your doing! You can put your own application key here. This can be generated from  <a target="_blank" href="https://trello.com/app-key" >https://trello.com/app-key</a>]]></comment>
+                </field>
+                <field id="enable" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[ Enable/Disable trello module from here. If module is disabled all trello magento integration's will be turned off ]]></comment>
+                </field>
+                <field id="log" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Trello Log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

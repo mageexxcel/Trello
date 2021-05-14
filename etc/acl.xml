@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Adminhtml::admin">
+                <resource id="Excellence_Trello::excellence" title="Excellence" sortOrder="10" >
+                    <resource id="Excellence_Trello::trello" title="Trello" sortOrder="40">
+                        <resource id="Excellence_Trello::trello_setupwizard" title="Setupwizard" sortOrder="10">
+                          <resource id="Excellence_Trello::rules" title="rules" sortOrder="100"/> </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Adminhtml::stores">
+                    <resource id="Magento_Adminhtml::stores_settings">
+                        <resource id="Magento_Adminhtml::config">
+                            <resource id="Excellence_Trello::trello_config" title="Excellence_Trello" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
+
+

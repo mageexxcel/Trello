@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+     <update handle="editor"/>
+    <body>
+	   <referenceContainer name="content">
+            <block class="Excellence\Trello\Block\Adminhtml\Rules\Edit" name="trello_rules_edit"/>
+        </referenceContainer>
+		 <referenceContainer name="left">
+            <block class="Excellence\Trello\Block\Adminhtml\Rules\Edit\Tabs" name="trello_rules_edit_tabs">
+				<block class="Excellence\Trello\Block\Adminhtml\Rules\Edit\Tab\Action" name="trello_rules_edit_tab_action"/>
+                <block class="Excellence\Trello\Block\Adminhtml\Rules\Edit\Tab\Conditions" name="trello_edit_tab_conditions"/>
+				 <action method="addTab">
+                    <argument name="name" xsi:type="string">action_section</argument>
+                    <argument name="block" xsi:type="string">trello_rules_edit_tab_action</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">conditions_section</argument>
+                    <argument name="block" xsi:type="string">trello_edit_tab_conditions</argument>
+                </action>
+			
+			</block>
+        </referenceContainer>
+    </body>
+</page>

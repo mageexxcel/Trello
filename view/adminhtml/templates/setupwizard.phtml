@@ -1,0 +1,137 @@
+<div id="allboardsurl" style="display:none">
+    <?php echo $block->getActionBoardUrl(); ?>
+</div>
+<div id="memberviewurl" style="display:none">
+    <?php echo $block->getActionUserUrl(); ?>
+</div>
+<div  id='trellosetupnotdone' style="display:none">
+    <div id="messages">
+        <div class="messages">
+            <div class="message message-notice notice">
+                <div data-ui-id="messages-message-notice"><?php  echo __('Trello Authentication not done. First go to Stores -> Configuration -> Excellence -> Trello to complete the authorization') ?></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loading-mask" id="own-loading" data-role="loader" style="display: none;">
+    <div class="popup popup-loading">
+        <div class="popup-inner">
+            <img src="<?php echo $block->getViewFileUrl('images/loader-2.gif'); ?>" alt="<?php echo __('Loading...'); ?>">
+          <?php  echo __('Please wait...') ?>  
+        </div>
+    </div>
+</div>
+<?php
+$states = $block->statusList();
+$action = $block->getActionUrl();
+$setup = $block->getSetupCollection();
+$first_item_data = $setup->getFirstItem();
+$first_item = $first_item_data->getId();
+$setup_data = $setup->getData();
+?>
+<?php
+if ($first_item_data->getOrderState() != '') {
+    echo "<div id='selected_board_id' style='display:none'>" . $first_item_data->getTrelloListId() . "</div>";
+}
+?>
+<form  method="POST"  id="target" enctype="multipart/form-data" action="<?php echo $action; ?>"  >
+    <input type="hidden" name="form_key" value="<?php echo $block->getFormKey(); ?>" />
+    <div class="accordion">
+        <div class="entry-edit form-inline">
+            <div class="section-config active">
+                <div class="entry-edit-head admin__collapsible-block">
+                    <span id="setupwizard setting" class="entry-edit-head-link"></span>
+                    <a id="" class="open" href="#"> <?php  echo __('Your Trello Open Boards') ?>  </a>
+                </div>
+               
+                <input id="" type="hidden" value="1" name="">
+                <fieldset id="trello setup wizard"  class="config admin__collapsible-block">
+                     <input type="button" name="reload" value="Refresh"  id="reload" class="action-default" style="float:right; margin-bottom:20px">
+                     <div id="messages" style="float:left">
+                        <div class="messages">
+                            <div class="message message-notice notice">
+                                <div data-ui-id="messages-message-notice"><?php  echo __('Select the Trello board where you wish to manage your orders. You can also create a new board in trello and press refresh button to see board here. ') ?></div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="form-list" cellspacing="0" style="width:550px; float:left;">
+                        <tbody>
+                            <tr id="row_status">
+                                    <td class="label" style="text-align: left; width:200px">
+                                        <label for="helloworld_active_display_scope">
+                                            <span><?php echo __('Select Board'); ?></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <select id="bdata">
+                                          <option value=""></option>
+                                        </select>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <div class="entry-edit-head admin__collapsible-block">
+                    <span id="setupwizard setting" class="entry-edit-head-link"></span>
+                    <a id="" class="open" href="#"> <?php  echo __('Assign Your Trello Lists To Different Order State') ?>  </a>
+                </div>
+               
+                <input id="" type="hidden" value="1" name="">
+                <fieldset id="trello setup wizard"  class="config admin__collapsible-block">
+                     <input type="button" name="reload" value="Refresh"  id="reloadlist" class="action-default" style="float:right; margin-bottom:20px">
+                     <div id="messages" style="float:left">
+                        <div class="messages">
+                            <div class="message message-notice notice">
+                                <div data-ui-id="messages-message-notice"><?php  echo __('Assign Magento Order States To Your Trello Lists. This helps to efficiently manage your magento orders. You can also assign all magento orders states to a single list. If you need to create a new list simple press refresh button to make it visible here. ') ?></div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="form-list" cellspacing="0" style="width:550px; float:left;">
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($states as $key => $value) :
+                                ?>
+                                <tr id="row_status">
+                                    <td class="label" style="text-align: left; width:200px">
+                                        <label for="helloworld_active_display_scope">
+                                            <span><?php echo $value; ?></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <select class="boardlist" name="<?php echo $key; ?>">
+                                            <?php if ($first_item != ''): ?>
+                                                <?php if (($setup_data[$i]['trello_list_id'] != '') && ($setup_data[$i]['trello_list_id'] != null)): ?>
+                                                    <option value=""> <?php  echo __('------  Select List ------ ') ?></option>
+                                                    <option value="<?php echo $setup_data[$i]['trello_list_id']; ?> " class='selectedlist'  style='display:none'><?php echo $setup_data[$i]['order_state']; ?></option>
+                                                <?php else: ?>
+                                                    <option value=""> <?php  echo __('------  Select List ------ ') ?></option>
+                                                    <option value="" class='selectedlist'  style='display:none'></option>
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <option value=""><?php  echo __('------  Select List ------ ') ?></option>
+                                                <option value="" class='selectedlist'  style='display:none'></option>
+                                            <?php endif; ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <?php $i++;
+                            endforeach;
+                            ?>
+                         
+                            <tr>
+                                <td> <input type="submit" id="finish" value="<?php echo __('Complete Setup Wizard') ?>" class="action-default"></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</form>
+<span style="display:none" id="boardurl"><?php echo $boardurl = $block->getBoardListActionUrl();?></span>
+<span style="display:none" id="keyvalue"><?php echo $block->getKeyValue(); ?></span>
+<span style="display:none" id="tokenvalue"><?php echo $block->getToken();?></span>
+<span style="display:none" id="webhookurl"><?php echo $block->getWebhookActionUrl();?></span>
+<span style="display:none" id="baseurl"><?php echo $block->getBaseUrl();?></span>
